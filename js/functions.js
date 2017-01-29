@@ -9,7 +9,7 @@ var numberList = [];
 $numbers.addEventListener('keypress', onlyNumbers);
 
 function onlyNumbers(event){
-	if( event.keyCode == 32 ||(event.keyCode > 47 && event.keyCode < 58) )
+	if( (event.keyCode == 32 || (event.keyCode > 47 && event.keyCode < 58)) )
 	{
 		clickBotton();
 	}
@@ -23,30 +23,28 @@ function onlyNumbers(event){
 
 /* obtener el click del boton */
 function clickBotton(){
-	$btnOrder.addEventListener('click', function(e) {
-		var groupNumbers = $numbers.value.trim();
-		var numbers = groupNumbers.split(' ');
+	var groupNumbers = $numbers.value.trim();
+	var numbers = groupNumbers.split(' ');
 
-		/* ordenando los valores ascendentemente */
-		var numberAsc = numbers.sort(function(a, b){return a-b});
-		/* ordenando los valores ascendentemente */
+	/* ordenando los valores ascendentemente */
+	var numberAsc = numbers.sort(function(a, b){return a-b});
+	/* ordenando los valores ascendentemente */
 
-		/*revisar si es que hay un valor repetido y retirarlo*/
-		var unique = numberAsc.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-		/*revisar si es que hay un valor repetido y retirarlo*/
+	/*revisar si es que hay un valor repetido y retirarlo*/
+	var unique = numberAsc.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+	/*revisar si es que hay un valor repetido y retirarlo*/
 
 
-		$numberList.innerHTML = '';
+	$numberList.innerHTML = '';
 
-		for( var i = 0; i < unique.length; i++ ) {
+	for( var i = 0; i < unique.length; i++ ) {
 
-			var current = unique[i];
+		var current = unique[i];
 
-			var elt = document.createElement('span');
-			elt.appendChild(document.createTextNode(current));
+		var elt = document.createElement('span');
+		elt.appendChild(document.createTextNode(current));
 
-			$numberList.appendChild(elt);
-		}
-	});
+		$numberList.appendChild(elt);
+	}
 }
 /* obtener el click del boton */
